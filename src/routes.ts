@@ -1,15 +1,22 @@
 import express from 'express';
 
+import AnswerController from '../src/controllers/AnswerController';
+import QuestionController from '../src/controllers/QuestionsController';
 import NarrativeController from '../src/controllers/NarrativeController';
-import UserController from '../src/controllers/UserController';
 
 const routes = express.Router();
 
+const answerController = new AnswerController();
+const questionController = new QuestionController();
 const narrativeController = new NarrativeController();
-const userController = new UserController();
 
 routes.get('/narrativas', narrativeController.index);
 routes.get('/narrativas/:id', narrativeController.index);
 routes.post('/narrativas', narrativeController.create);
+routes.get('/questoes', questionController.index);
+routes.post('/questao', questionController.create);
+routes.post('/questoes', questionController.getPerGameId);
+routes.get('/answers', answerController.index);
+routes.get('/answers/:id', answerController.index);
 
 export default routes;
