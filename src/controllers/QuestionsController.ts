@@ -45,7 +45,7 @@ class QuestionsController{
             ); 
         }
 
-        const serializedQuestions = questions.map(question => {
+        /*const serializedQuestions = questions.map(question => {
             return {
                 id: question.id,                
                 description: question.description,
@@ -54,9 +54,9 @@ class QuestionsController{
                 created_at: question.created_at,
                 updated_at: question.updated_at
             }
-        });
+        });*/
 
-        return response.json(serializedQuestions);
+        return response.json(questions);
     }
 
     async getPerGameId(request: Request, response: Response){        
@@ -74,7 +74,7 @@ class QuestionsController{
                 ]
             );        
 
-        const serializedQuestions = questions.map(question => {
+        /*const serializedQuestions = questions.map(question => {
             return {
                 id: question.id,                
                 description: question.decscription,
@@ -83,7 +83,7 @@ class QuestionsController{
                 created_at: question.created_at,
                 updated_at: question.updated_at
             }
-        });
+        });*/
                 
         return response.json(questions);
     }
@@ -133,9 +133,7 @@ class QuestionsController{
                     created_at: answerItem.created_at,
                     updated_at: answerItem.updated_at
                 };
-            });
-
-            console.log(classAnswer)
+            });            
 
                 // Agora sim podemos inserir o objeto 'classAnswer' na tabela 'answers'
             const insertedAnswer = await trx("answers").insert(classAnswer);
