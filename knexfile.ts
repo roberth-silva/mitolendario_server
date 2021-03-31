@@ -1,16 +1,16 @@
-import path from 'path';
+//import path from 'path';
 
 module.exports = {
     development: {
         client: 'sqlite3',
         connection:{
-            filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite')
+            //filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite')
         },
         migrations:{
-            directory: path.resolve(__dirname,'src','database','migrations')
+            //directory: path.resolve(__dirname,'src','database','migrations')
         },
         seeds:{
-            directory: path.resolve(__dirname,'src','database','seeds')
+            //directory: path.resolve(__dirname,'src','database','seeds')
         },
         useNullAsDefault: true,
     },
@@ -33,7 +33,13 @@ module.exports = {
         client: 'pg',
         connection: {
             url: process.env.DATABASE_URL,
-            charset: 'utf8',
+            /*host : 'ec2-18-233-83-165.compute-1.amazonaws.com',
+            user : 'lfohpdgzphqmnk',
+            password : 'c8210d92f1abb31e690248697d35cbf27a03caa5a743c79d4aea725acc0cfa1a',
+            port: 5432,
+            database : 'da2n37al7cptee',
+            charset: 'utf8',*/
+            ssl: true
         },
         pool: {
             min: 2,
