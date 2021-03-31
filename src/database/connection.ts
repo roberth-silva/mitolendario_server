@@ -2,7 +2,7 @@ import knex from 'knex';
 
 const knexfile = require('../../knexfile');
 
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'production';
 const configOptions = knexfile[env];
 
 const connection = knex(configOptions);
