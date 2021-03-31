@@ -5,6 +5,8 @@ class NarrativeController {
 
     /**LISTAR NARRATIVAS */
     async index(request: Request, response: Response){        
+        
+        console.log(process.env.NODE_ENV);
 
         const param = request.params;
 
@@ -34,6 +36,8 @@ class NarrativeController {
                 ]
             ); 
         }
+
+        
 
         /*const serializedNarratives = narratives.map(narrative => {
             return {
