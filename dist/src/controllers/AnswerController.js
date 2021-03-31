@@ -45,7 +45,7 @@ var AnswerController = /** @class */ (function () {
     }
     AnswerController.prototype.index = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var param, id, answers, serializedAnswers;
+            var param, id, answers;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -77,19 +77,18 @@ var AnswerController = /** @class */ (function () {
                     case 3:
                         answers = _a.sent();
                         _a.label = 4;
-                    case 4:
-                        serializedAnswers = answers.map(function (answer) {
-                            return {
-                                id: answer.id,
-                                description: answer.description,
-                                status: answer.status,
-                                question_id: answer.game_id,
-                                created_at: answer.created_at,
-                                updated_at: answer.updated_at
-                            };
-                        });
-                        //console.log(serializedAnswers);
-                        return [2 /*return*/, response.json(serializedAnswers)];
+                    case 4: 
+                    /*const serializedAnswers = answers.map(answer => {
+                        return {
+                            id: answer.id,
+                            description: answer.description,
+                            status: answer.status,
+                            question_id: answer.game_id,
+                            created_at: answer.created_at,
+                            updated_at: answer.updated_at
+                        }
+                    });        */
+                    return [2 /*return*/, response.json(answers)];
                 }
             });
         });

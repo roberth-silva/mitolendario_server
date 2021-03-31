@@ -46,7 +46,7 @@ var NarrativeController = /** @class */ (function () {
     /**LISTAR NARRATIVAS */
     NarrativeController.prototype.index = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var param, id, narratives, serializedNarratives;
+            var param, id, narratives;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -74,17 +74,17 @@ var NarrativeController = /** @class */ (function () {
                     case 3:
                         narratives = _a.sent();
                         _a.label = 4;
-                    case 4:
-                        serializedNarratives = narratives.map(function (narrative) {
-                            return {
-                                id: narrative.id,
-                                name: narrative.name,
-                                desc: narrative.description,
-                                created_at: narrative.created_at,
-                                updated_at: narrative.updated_at
-                            };
-                        });
-                        return [2 /*return*/, response.json(serializedNarratives)];
+                    case 4: 
+                    /*const serializedNarratives = narratives.map(narrative => {
+                        return {
+                            id: narrative.id,
+                            name: narrative.name,
+                            desc: narrative.description,
+                            created_at: narrative.created_at,
+                            updated_at: narrative.updated_at
+                        }
+                    });*/
+                    return [2 /*return*/, response.json(narratives)];
                 }
             });
         });

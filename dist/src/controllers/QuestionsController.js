@@ -46,7 +46,7 @@ var QuestionsController = /** @class */ (function () {
     /**LIST QUESTIONS */
     QuestionsController.prototype.index = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var param, id, questions, serializedQuestions;
+            var param, id, questions;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -76,25 +76,25 @@ var QuestionsController = /** @class */ (function () {
                     case 3:
                         questions = _a.sent();
                         _a.label = 4;
-                    case 4:
-                        serializedQuestions = questions.map(function (question) {
-                            return {
-                                id: question.id,
-                                description: question.description,
-                                status: question.status,
-                                game_id: question.game_id,
-                                created_at: question.created_at,
-                                updated_at: question.updated_at
-                            };
-                        });
-                        return [2 /*return*/, response.json(serializedQuestions)];
+                    case 4: 
+                    /*const serializedQuestions = questions.map(question => {
+                        return {
+                            id: question.id,
+                            description: question.description,
+                            status: question.status,
+                            game_id: question.game_id,
+                            created_at: question.created_at,
+                            updated_at: question.updated_at
+                        }
+                    });*/
+                    return [2 /*return*/, response.json(questions)];
                 }
             });
         });
     };
     QuestionsController.prototype.getPerGameId = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var game_id, questions, serializedQuestions;
+            var game_id, questions;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -109,7 +109,7 @@ var QuestionsController = /** @class */ (function () {
                             ])];
                     case 1:
                         questions = _a.sent();
-                        serializedQuestions = questions.map(function (question) {
+                        /*const serializedQuestions = questions.map(question => {
                             return {
                                 id: question.id,
                                 description: question.decscription,
@@ -117,8 +117,8 @@ var QuestionsController = /** @class */ (function () {
                                 game_id: question.game_id,
                                 created_at: question.created_at,
                                 updated_at: question.updated_at
-                            };
-                        });
+                            }
+                        });*/
                         return [2 /*return*/, response.json(questions)];
                 }
             });
@@ -160,7 +160,6 @@ var QuestionsController = /** @class */ (function () {
                                 updated_at: answerItem.updated_at
                             };
                         });
-                        console.log(classAnswer);
                         return [4 /*yield*/, trx("answers").insert(classAnswer)];
                     case 4:
                         insertedAnswer = _b.sent();

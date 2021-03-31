@@ -35,7 +35,7 @@ class NarrativeController {
             ); 
         }
 
-        const serializedNarratives = narratives.map(narrative => {
+        /*const serializedNarratives = narratives.map(narrative => {
             return {
                 id: narrative.id,
                 name: narrative.name,
@@ -43,9 +43,9 @@ class NarrativeController {
                 created_at: narrative.created_at,
                 updated_at: narrative.updated_at
             }
-        });
+        });*/
 
-        return response.json(serializedNarratives);
+        return response.json(narratives);
     }
 
     /**CRIAR NOVA NARRATIVA */

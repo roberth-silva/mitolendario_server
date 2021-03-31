@@ -38,7 +38,7 @@ class AnswerController{
             ); 
         }
 
-        const serializedAnswers = answers.map(answer => {
+        /*const serializedAnswers = answers.map(answer => {
             return {
                 id: answer.id,                
                 description: answer.description,
@@ -47,11 +47,9 @@ class AnswerController{
                 created_at: answer.created_at,
                 updated_at: answer.updated_at
             }
-        });
+        });        */
 
-        //console.log(serializedAnswers);
-
-        return response.json(serializedAnswers);
+        return response.json(answers);
     }
 }
 

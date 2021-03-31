@@ -40,7 +40,7 @@ class UserController{
             ); 
         }
 
-        const serializedUsers = users.map(user => {
+        /*const serializedUsers = users.map(user => {
             return {
                 id: user.id,
                 login: user.login,
@@ -49,9 +49,9 @@ class UserController{
                 created_at: user.created_at,
                 updated_at: user.updated_at
             }
-        });
+        });*/
 
-        return response.json(serializedUsers);
+        return response.json(users);
     }
 
     async logon(request: Request, response: Response){
@@ -71,15 +71,15 @@ class UserController{
             status: 'ATIVO'
           }).select('users.id','users.login','users.status');
 
-          const serializedUser = users.map(user => {
+          /*const serializedUser = users.map(user => {
             return {
                 id: user.id,
                 login: user.login,
                 status: user.status
             }
-        });
+        });*/
 
-        return response.json(serializedUser); 
+        return response.json(users); 
 
     }
 

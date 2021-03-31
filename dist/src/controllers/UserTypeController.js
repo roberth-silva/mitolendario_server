@@ -47,7 +47,7 @@ var UserTypeController = /** @class */ (function () {
     /**LISTAR USUÁRIOS */
     UserTypeController.prototype.index = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var param, id, users, serializedUsers;
+            var param, id, users;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -79,25 +79,25 @@ var UserTypeController = /** @class */ (function () {
                     case 3:
                         users = _a.sent();
                         _a.label = 4;
-                    case 4:
-                        serializedUsers = users.map(function (user) {
-                            return {
-                                id: user.id,
-                                login: user.login,
-                                pass: user.pass,
-                                status: user.status,
-                                created_at: user.created_at,
-                                updated_at: user.updated_at
-                            };
-                        });
-                        return [2 /*return*/, response.json(users)];
+                    case 4: 
+                    /*const serializedUsers = users.map(user => {
+                        return {
+                            id: user.id,
+                            login: user.login,
+                            pass: user.pass,
+                            status: user.status,
+                            created_at: user.created_at,
+                            updated_at: user.updated_at
+                        }
+                    });*/
+                    return [2 /*return*/, response.json(users)];
                 }
             });
         });
     };
     UserTypeController.prototype.logon = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, login, pass, hashPass, newPass, users, serializedUser;
+            var _a, login, pass, hashPass, newPass, users;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
@@ -112,14 +112,14 @@ var UserTypeController = /** @class */ (function () {
                             }).select('users.id', 'users.login', 'users.status')];
                     case 1:
                         users = _b.sent();
-                        serializedUser = users.map(function (user) {
-                            return {
-                                id: user.id,
-                                login: user.login,
-                                status: user.status
-                            };
-                        });
-                        return [2 /*return*/, response.json(serializedUser)];
+                        /*const serializedUser = users.map(user => {
+                          return {
+                              id: user.id,
+                              login: user.login,
+                              status: user.status
+                          }
+                      });*/
+                        return [2 /*return*/, response.json(users)];
                 }
             });
         });
