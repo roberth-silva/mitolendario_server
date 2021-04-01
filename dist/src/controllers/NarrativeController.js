@@ -50,6 +50,7 @@ var NarrativeController = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        console.log(process.env.NODE_ENV);
                         param = request.params;
                         id = param.id;
                         if (!(Number(id) > 0)) return [3 /*break*/, 2];

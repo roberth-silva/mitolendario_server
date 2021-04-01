@@ -1,6 +1,5 @@
 import knex from 'knex';
 
-process.env.NODE_ENV = 'production';
 const knexfile = require('../../knexfile');
 
 const env = process.env.NODE_ENV || 'development';

@@ -1,5 +1,3 @@
-require('ts-node/register');
-
 import path from 'path';
 
 module.exports = {
@@ -34,14 +32,14 @@ module.exports = {
     production: {
         client: 'pg',
         connection: {
-            //url: process.env.DATABASE_URL,
-            host : 'ec2-18-233-83-165.compute-1.amazonaws.com',
+            url: process.env.DATABASE_URL,
+            /*host : 'ec2-18-233-83-165.compute-1.amazonaws.com',
             user : 'lfohpdgzphqmnk',
             password : 'c8210d92f1abb31e690248697d35cbf27a03caa5a743c79d4aea725acc0cfa1a',
             port: 5432,
             database : 'da2n37al7cptee',
             charset: 'utf8',
-            ssl: true
+            ssl: true*/
         },
         pool: {
             min: 2,
