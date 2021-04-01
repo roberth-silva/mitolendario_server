@@ -4,8 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var knex_1 = __importDefault(require("knex"));
-process.env.NODE_ENV = 'production';
 var knexfile = require('../../knexfile');
+console.log(process.env.NODE_ENV);
+console.log(process.env.DATABASE_URL);
 var env = process.env.NODE_ENV || 'development';
 var configOptions = knexfile[env];
 var connection = knex_1.default(configOptions);
