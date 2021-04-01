@@ -1,10 +1,14 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-var knex = require('knex');
+var knex_1 = __importDefault(require("knex"));
+process.env.NODE_ENV = 'production';
 var knexfile = require('../../knexfile');
-var env = process.env.NODE_ENV || 'production';
+var env = process.env.NODE_ENV || 'development';
 var configOptions = knexfile[env];
-var connection = knex(configOptions);
+var connection = knex_1.default(configOptions);
 //import path from 'path';
 /*const connection = knex({
     client: 'sqlite3',
