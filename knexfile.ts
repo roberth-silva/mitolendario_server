@@ -39,7 +39,7 @@ module.exports = {
             max: 10
         },
         migrations: {            
-            directory: path.resolve(__dirname,'dist','src','database','migrations')
+            directory: path.resolve(__dirname,'dist/src/database/migrations')
         }
     }  
 };
