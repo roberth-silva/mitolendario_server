@@ -1,5 +1,7 @@
 import path from 'path';
 
+console.log('oi',path.resolve(__dirname,'dist','src','database','migrations'));
+
 module.exports = {
     development: {
         client: 'sqlite3',
