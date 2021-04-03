@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var path_1 = __importDefault(require("path"));
+console.log('oi', path_1.default.resolve(__dirname, 'dist', 'src', 'database', 'migrations'));
 module.exports = {
     development: {
         client: 'sqlite3',
@@ -43,7 +44,7 @@ module.exports = {
             max: 10
         },
         migrations: {
-            directory: path_1.default.resolve(__dirname, 'dist', 'src', 'database', 'migrations')
+            directory: path_1.default.resolve(__dirname, 'dist', 'database', 'migrations')
         }
     }
 };
