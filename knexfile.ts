@@ -8,8 +8,8 @@ module.exports = {
             min: 2,
             max: 10
         },
-        migrations: {            
-            directory: 'database/migrations'
+        migrations: {
+            directory: path.resolve(__dirname,'dist','database','migrations')
         }
     }  
 };
