@@ -9,7 +9,7 @@ module.exports = {
             max: 10
         },
         migrations: {            
-            directory: 'dist/src/database/migrations'
+            directory: 'database/migrations'
         }
     }  
 };
