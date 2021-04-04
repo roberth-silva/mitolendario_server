@@ -1,5 +1,7 @@
 import path from 'path';
 
+console.log("database_url: " + process.env.DATABASE_URL);
+
 module.exports = {
   development: {
     client: "pg",
