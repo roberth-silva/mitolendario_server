@@ -1,12 +1,14 @@
 import path from 'path';
 
-console.log('oi',path.resolve(__dirname,'dist','src','database','migrations'));
-
 module.exports = {
     development: {
-        client: 'sqlite3',
+        client: 'pg',
         connection:{
-            filename: path.resolve(__dirname, 'src', 'database', 'database.sqlite')
+            database: 'dbteste',
+            user:     'postgres',
+            password: 'rob!123gi0840',
+            port:      5432,
+            host:      'localhost'
         },
         migrations:{
             directory: path.resolve(__dirname,'src','database','migrations')
