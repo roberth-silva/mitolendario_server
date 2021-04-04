@@ -19,4 +19,7 @@ routes.post('/questao', questionController.create);
 routes.post('/questoes', questionController.getPerGameId);
 routes.get('/answers', answerController.index);
 routes.get("/answers/:id", answerController.index);
+routes.get("/", function (request, response) {
+    response.send("Hello world! " + process.env.DATABASE_URL);
+});
 exports.default = routes;

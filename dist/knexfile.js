@@ -50,5 +50,6 @@ module.exports = {
         migrations: {
             directory: path_1.default.resolve(__dirname, "src", "database", "migrations"),
         },
+        ssl: true,
     },
 };
