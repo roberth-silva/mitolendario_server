@@ -41,7 +41,8 @@ module.exports = {
     production: {
         client: "pg",
         connection: {
-            url: process.env.DATABASE_URL,
+            connectionString: process.env.DATABASE_URL,
+            ssl: { rejectUnauthorized: false },
         },
         pool: {
             min: 2,
@@ -49,7 +50,6 @@ module.exports = {
         },
         migrations: {
             directory: path_1.default.resolve(__dirname, "src", "database", "migrations"),
-        },
-        ssl: true,
+        }
     },
 };
