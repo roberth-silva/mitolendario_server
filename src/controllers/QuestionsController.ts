@@ -157,7 +157,8 @@ class QuestionsController{
             });
             
         } catch (error) {
-            console.log('nao inseriu')
+            console.log("nao inseriu");
+            console.log(error);
             // desfaz qualquer alteração no banco
             await trx.rollback();
 
