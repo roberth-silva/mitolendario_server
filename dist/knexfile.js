@@ -4,47 +4,52 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var path_1 = __importDefault(require("path"));
-console.log('oi', path_1.default.resolve(__dirname, 'dist', 'src', 'database', 'migrations'));
+console.log("database_url: " + process.env.DATABASE_URL);
 module.exports = {
     development: {
-        client: 'sqlite3',
+        client: "pg",
         connection: {
-            filename: path_1.default.resolve(__dirname, 'src', 'database', 'database.sqlite')
+            database: "dbteste",
+            user: "postgres",
+            password: "rob!123gi0840",
+            port: 5432,
+            host: "localhost",
         },
         migrations: {
-            directory: path_1.default.resolve(__dirname, 'src', 'database', 'migrations')
+            directory: path_1.default.resolve(__dirname, "src", "database", "migrations"),
         },
         seeds: {
-            directory: path_1.default.resolve(__dirname, 'src', 'database', 'seeds')
+            directory: path_1.default.resolve(__dirname, "src", "database", "seeds"),
         },
         useNullAsDefault: true,
     },
     staging: {
-        client: 'postgresql',
+        client: "postgresql",
         connection: {
-            database: 'my_db',
-            user: 'username',
-            password: 'password'
+            database: "my_db",
+            user: "username",
+            password: "password",
         },
         pool: {
             min: 2,
-            max: 10
+            max: 10,
         },
         migrations: {
-            tableName: 'knex_migrations'
-        }
+            tableName: "knex_migrations",
+        },
     },
     production: {
-        client: 'pg',
+        client: "pg",
         connection: {
-            url: process.env.DATABASE_URL
+            connectionString: process.env.DATABASE_URL,
+            ssl: { rejectUnauthorized: false },
         },
         pool: {
             min: 2,
-            max: 10
+            max: 10,
         },
         migrations: {
-            directory: path_1.default.resolve(__dirname, 'dist', 'database', 'migrations')
+            directory: path_1.default.resolve(__dirname, "src", "database", "migrations"),
         }
-    }
+    },
 };
