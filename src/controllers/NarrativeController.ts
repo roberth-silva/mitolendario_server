@@ -15,7 +15,7 @@ class NarrativeController {
         var narratives;
 
         if (Number(id) > 0){
-            narratives = await db('users')
+            narratives = await db('narratives')
             .where('narratives.id', id)
             .select(
                 [
@@ -36,19 +36,7 @@ class NarrativeController {
                 ]
             ); 
         }
-
         
-
-        /*const serializedNarratives = narratives.map(narrative => {
-            return {
-                id: narrative.id,
-                name: narrative.name,
-                desc: narrative.description,
-                created_at: narrative.created_at,
-                updated_at: narrative.updated_at
-            }
-        });*/
-
         return response.json(narratives);
     }
 
