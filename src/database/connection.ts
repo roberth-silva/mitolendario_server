@@ -2,8 +2,8 @@ import knex from 'knex';
 
 const knexfile = require('../../knexfile');
 
-console.log(process.env.NODE_ENV)
-console.log(process.env.DATABASE_URL)
+console.log("NODE_ENV: ", process.env.NODE_ENV);
+console.log("DATABASE_URL", process.env.DATABASE_URL);
 
 const env = process.env.NODE_ENV || 'development';
 const configOptions = knexfile[env];

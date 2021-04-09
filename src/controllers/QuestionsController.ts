@@ -98,8 +98,7 @@ class QuestionsController{
             updated_at,
             answers
         } = request.body;
-
-        console.log('ola')
+        
         console.log(description,
             status,
             game_id,
@@ -108,20 +107,28 @@ class QuestionsController{
             answers)            
 
         const trx = await db.transaction();
+        var question_id = 0;
 
         try {
             
-            const insertedQuestion = await trx('questions').insert({
+            await trx('questions').insert({
                 description,
                 status,
                 game_id,
                 created_at,
                 updated_at
+            })
+            .returning('id')            
+            .then(function(result)
+            {                
+                console.log('result', result);
+                question_id = result[0];
             });
 
             /**Retrieve the inserted question id */
-            const question_id = insertedQuestion[0];
-            console.log(question_id)
+            //const question_id = insertedQuestion[0];
+            //console.log('insertedQuestion: ', insertedQuestion);
+            console.log("question_id: ", question_id);
 
             // Como o objeto asnwers é um array de vários dados, antes de inserir precisamos fazer algumas configurações.
             // Com a função map() vamos percorrer cada item do array e transformá-los em um objeto.
@@ -130,16 +137,17 @@ class QuestionsController{
                     description: answerItem.description,
                     status: answerItem.status,
                     question_id: question_id,
-                    created_at: answerItem.created_at,
-                    updated_at: answerItem.updated_at
+                    created_at: new Date().toUTCString(),
+                    updated_at: new Date().toUTCString()
                 };
             });            
 
                 // Agora sim podemos inserir o objeto 'classAnswer' na tabela 'answers'
-            const insertedAnswer = await trx("answers").insert(classAnswer);
-            const answer_id = insertedAnswer[0];
+//            const insertedAnswer = 
+            await trx("answers").insert(classAnswer);
+            //const answer_id = insertedAnswer[0];
 
-            console.log('answer_id',answer_id)
+            //console.log('answer_id',answer_id)
 
             // Como estamos usando o transaction, todas as querys estão apenas esperando o commit para realmente rodarem.
             // Com todas as inserções preparadas, podemos fazer o commit() que faz as inserções nas tabelas.
@@ -147,7 +155,7 @@ class QuestionsController{
 
             /**API aqui então, retorna mensagem de sucesso para o usuário */
             return response.status(201).send({
-                id: question_id,                    
+                id: question_id,
                 description: description,
                 status: status,
                 game_id: game_id,
