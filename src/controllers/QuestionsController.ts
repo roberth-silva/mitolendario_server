@@ -125,11 +125,6 @@ class QuestionsController{
                 question_id = result[0];
             });
 
-            /**Retrieve the inserted question id */
-            //const question_id = insertedQuestion[0];
-            //console.log('insertedQuestion: ', insertedQuestion);
-            console.log("question_id: ", question_id);
-
             // Como o objeto asnwers é um array de vários dados, antes de inserir precisamos fazer algumas configurações.
             // Com a função map() vamos percorrer cada item do array e transformá-los em um objeto.
             const classAnswer = answers.map((answerItem: answerItem) => {
@@ -142,12 +137,8 @@ class QuestionsController{
                 };
             });            
 
-                // Agora sim podemos inserir o objeto 'classAnswer' na tabela 'answers'
-//            const insertedAnswer = 
-            await trx("answers").insert(classAnswer);
-            //const answer_id = insertedAnswer[0];
-
-            //console.log('answer_id',answer_id)
+            // Agora sim podemos inserir o objeto 'classAnswer' na tabela 'answers'
+            await trx("answers").insert(classAnswer);            
 
             // Como estamos usando o transaction, todas as querys estão apenas esperando o commit para realmente rodarem.
             // Com todas as inserções preparadas, podemos fazer o commit() que faz as inserções nas tabelas.
