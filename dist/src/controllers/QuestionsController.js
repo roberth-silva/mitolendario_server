@@ -127,16 +127,16 @@ var QuestionsController = /** @class */ (function () {
     /**CREATE A NEW QUESTION */
     QuestionsController.prototype.create = function (request, response) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, description, status, game_id, created_at, updated_at, answers, trx, insertedQuestion, question_id_1, classAnswer, insertedAnswer, answer_id, error_1;
+            var _a, description, status, game_id, created_at, updated_at, answers, trx, question_id, classAnswer, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _a = request.body, description = _a.description, status = _a.status, game_id = _a.game_id, created_at = _a.created_at, updated_at = _a.updated_at, answers = _a.answers;
-                        console.log('ola');
                         console.log(description, status, game_id, created_at, updated_at, answers);
                         return [4 /*yield*/, connection_1.default.transaction()];
                     case 1:
                         trx = _b.sent();
+                        question_id = 0;
                         _b.label = 2;
                     case 2:
                         _b.trys.push([2, 6, , 8]);
@@ -146,25 +146,28 @@ var QuestionsController = /** @class */ (function () {
                                 game_id: game_id,
                                 created_at: created_at,
                                 updated_at: updated_at
+                            })
+                                .returning('id')
+                                .then(function (result) {
+                                console.log('result', result);
+                                question_id = result[0];
                             })];
                     case 3:
-                        insertedQuestion = _b.sent();
-                        question_id_1 = insertedQuestion[0];
-                        console.log(question_id_1);
+                        _b.sent();
                         classAnswer = answers.map(function (answerItem) {
                             return {
                                 description: answerItem.description,
                                 status: answerItem.status,
-                                question_id: question_id_1,
-                                created_at: answerItem.created_at,
-                                updated_at: answerItem.updated_at
+                                question_id: question_id,
+                                created_at: new Date().toUTCString(),
+                                updated_at: new Date().toUTCString()
                             };
                         });
+                        // Agora sim podemos inserir o objeto 'classAnswer' na tabela 'answers'
                         return [4 /*yield*/, trx("answers").insert(classAnswer)];
                     case 4:
-                        insertedAnswer = _b.sent();
-                        answer_id = insertedAnswer[0];
-                        console.log('answer_id', answer_id);
+                        // Agora sim podemos inserir o objeto 'classAnswer' na tabela 'answers'
+                        _b.sent();
                         // Como estamos usando o transaction, todas as querys estão apenas esperando o commit para realmente rodarem.
                         // Com todas as inserções preparadas, podemos fazer o commit() que faz as inserções nas tabelas.
                         return [4 /*yield*/, trx.commit()];
@@ -174,7 +177,7 @@ var QuestionsController = /** @class */ (function () {
                         _b.sent();
                         /**API aqui então, retorna mensagem de sucesso para o usuário */
                         return [2 /*return*/, response.status(201).send({
-                                id: question_id_1,
+                                id: question_id,
                                 description: description,
                                 status: status,
                                 game_id: game_id,
@@ -184,7 +187,8 @@ var QuestionsController = /** @class */ (function () {
                             })];
                     case 6:
                         error_1 = _b.sent();
-                        console.log('nao inseriu');
+                        console.log("nao inseriu");
+                        console.log(error_1);
                         // desfaz qualquer alteração no banco
                         return [4 /*yield*/, trx.rollback()];
                     case 7:
