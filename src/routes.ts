@@ -20,6 +20,7 @@ routes.post('/narrativas', narrativeController.create);
 routes.get('/questoes', questionController.index);
 routes.post('/questao', questionController.create);
 routes.post('/questoes', questionController.getPerGameId);
+routes.delete("/questao/:id", questionController.delete);
 routes.get('/answers', answerController.index);
 routes.get("/answers/:id", answerController.index);
 routes.get("/", (request, response) => {
